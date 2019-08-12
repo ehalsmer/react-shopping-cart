@@ -14,7 +14,7 @@ const Item = props => {
 				<p>$ {props.price}</p>
 				<button onClick={e => {
 					e.preventDefault();
-					console.log('props', props)
+					// console.log('props', props)
 					removeItem(props.id)
 				}}>
 					Remove from cart</button>

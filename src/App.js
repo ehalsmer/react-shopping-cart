@@ -12,11 +12,14 @@ import {ProductContext} from './contexts/ProductContext';
 import {CartContext} from './contexts/CartContext';
 
 function App() {
+	const localCart = localStorage.getItem('cart')
+
 	const [products] = useState(data); 
-	const [cart, setCart] = useState([]); // store cart on localStorage
+	const [cart, setCart] = useState(localCart ? JSON.parse(localCart) : []); // getting initial state from localStorage
 
 	
 	useEffect(()=>{
+		// Any time cart is updated, we update localStorage
 		localStorage.setItem('cart', JSON.stringify(cart));
 	}, [cart])
 
@@ -24,7 +27,7 @@ function App() {
 		setCart([...cart, item]);
 	};
 	const removeItem = id => {
-		console.log('Removing item with ID:', id)
+		// console.log('Removing item with ID:', id)
 		// filter here returns a new array of cartItems not equal to item (by comparing ids)
 		setCart(cart.filter(cartItem => cartItem.id !== id))
 	}

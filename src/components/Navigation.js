@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { CartContext } from '../contexts/CartContext';
 
 const Navigation = () => {
-	const {cart, removeItem} = useContext(CartContext);
-	console.log('CART in Navigation', cart)
+	const {cart} = useContext(CartContext);
+	// console.log('CART in Navigation', cart)
 	return (
 		<div className="navigation">
 			<NavLink to="/">Products</NavLink>
