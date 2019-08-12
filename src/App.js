@@ -24,7 +24,9 @@ function App() {
 	}, [cart])
 
 	const addItem = item => {
-		setCart([...cart, item]);
+		!cart.includes(item) ? 
+			setCart([...cart, item]) :
+				setCart([...cart]);
 	};
 	const removeItem = id => {
 		// console.log('Removing item with ID:', id)
