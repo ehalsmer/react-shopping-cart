@@ -18,10 +18,15 @@ function App() {
 	const addItem = item => {
 		setCart([...cart, item]);
 	};
+	const removeItem = id => {
+		console.log('Removing item with ID:', id)
+		// filter here returns a new array of cartItems not equal to item (by comparing ids)
+		setCart(cart.filter(cartItem => cartItem.id !== id))
+	}
 
 	return (
 		<ProductContext.Provider value={{products, addItem}}>
-			<CartContext.Provider value={cart}>
+			<CartContext.Provider value={{cart, removeItem}}>
 				<div className="App">
 					<Navigation />
 		
@@ -30,8 +35,6 @@ function App() {
 						exact
 						path="/"
 						component={Products}/>
-						)}
-					/>
 		
 					<Route
 						path="/cart"
